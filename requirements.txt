@@ -1,0 +1,29 @@
+# Core LangChain
+langchain
+langchain-core
+langchain-community
+langchain-text-splitters
+
+# LangGraph (needed for create_react_agent, the prebuilt ReAct agent)
+langgraph
+
+# OpenAI integration
+
+
+# Tavily search tool
+tavily-python
+langchain-tavily
+
+# BeautifulSoup for web scraping tool
+beautifulsoup4
+requests
+lxml
+
+# Vector store (using langchain_community.vectorstores.Chroma)
+chromadb
+
+# Environment variables
+python-dotenv
+
+# Nicer terminal output (optional, used in earlier scripts)
+rich
