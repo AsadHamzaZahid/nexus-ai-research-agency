@@ -4,6 +4,10 @@ A small team of AI agents that work together to research a topic for you: they s
 
 Built with **LangChain**, **Streamlit**, and a multi-agent pipeline.
 
+## 🌐 Live demo
+
+**[Open the live app](https://nexus-ai-research-agency-zcqrlhnhsrhg6fzbeuxp6w.streamlit.app/)**
+
 ---
 
 ## 🤖 How it works
@@ -29,7 +33,7 @@ You type a topic, hit **Run the Agents**, and watch each stage complete before g
 
 ## 🚀 Getting started (local setup)
 
-This project is **not deployed** yet — right now it only runs locally. To try it:
+You can use the [live demo](https://nexus-ai-research-agency-zcqrlhnhsrhg6fzbeuxp6w.streamlit.app/) above, or run it locally:
 
 ### 1. Clone the repo
 ```bash
@@ -69,7 +73,7 @@ The app will open automatically at `http://localhost:8501`.
 
 ## 📌 Status
 
-🚧 **Work in progress** — this is a local prototype, not yet deployed publicly. Deployment (e.g. via Streamlit Community Cloud or a similar platform) is planned for a future update.
+✅ **Deployed** on Streamlit Community Cloud. The free tier puts apps to sleep after a period of inactivity, so the first load may take a few seconds.
 
 ---
 
