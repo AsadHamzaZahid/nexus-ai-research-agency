@@ -1,18 +1,34 @@
 from langchain.agents import create_agent
-from langchain_mistralai import ChatMistralAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
+from langchain_google_genai import ChatGoogleGenerativeAI
 from tools import web_search, scrape_url
 from dotenv import load_dotenv
+import os
 
-load_dotenv()
+load_dotenv()  # reads .env locally; on Streamlit Cloud the secrets are already env vars
 
-# model setup
-llm = ChatMistralAI(model="mistral-small-2506", temperature=0)
 
+def get_llm():
+    primary = ChatGoogleGenerativeAI(
+        model="gemini-3.5-flash",
+        google_api_key=os.getenv("GEMINI_API_KEY"),
+        temperature=0.3,
+        max_retries=2,
+    )
+    backup = ChatGoogleGenerativeAI(
+        model="gemini-3.5-flash-lite",
+        google_api_key=os.getenv("GEMINI_API_KEY"),
+        temperature=0.3,
+        max_retries=2,
+    )
+    return primary.with_fallbacks([backup])
 
 # 1st agent
+
+
 def build_search_agent():
+    llm = get_llm()
     return create_agent(
         model=llm,
         tools=[web_search],
@@ -21,6 +37,7 @@ def build_search_agent():
 
 
 def build_reader_agent():
+    llm = get_llm()
     return create_agent(model=llm, tools=[scrape_url])
 
 # WIRTER CHAIN
@@ -43,6 +60,8 @@ Structure the report as:
 
 Be detailed, factual and professional."""),
 ])
+
+llm = get_llm()
 
 writer_chain = writer_prompt | llm | StrOutputParser()
 

@@ -4,6 +4,7 @@ langchain-core
 langchain-community
 langchain-mistralai
 langchain-text-splitters
+langchain-google-genai
 
 # LangGraph (needed for create_react_agent, the prebuilt ReAct agent)
 langgraph
